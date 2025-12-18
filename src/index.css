@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RRR Enterprise Design System - Agricultural Theme */
+
+@layer base {
+  :root {
+    /* Warm cream background for agricultural feel */
+    --background: 40 33% 98%;
+    --foreground: 142 40% 10%;
+
+    /* Card with slight warmth */
+    --card: 40 20% 99%;
+    --card-foreground: 142 40% 10%;
+
+    --popover: 40 20% 99%;
+    --popover-foreground: 142 40% 10%;
+
+    /* Primary: Deep Forest Green */
+    --primary: 142 76% 22%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Secondary: Golden Amber */
+    --secondary: 45 93% 47%;
+    --secondary-foreground: 142 40% 10%;
+
+    /* Muted: Soft sage */
+    --muted: 142 20% 92%;
+    --muted-foreground: 142 20% 40%;
+
+    /* Accent: Earthy brown */
+    --accent: 30 40% 35%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 142 20% 85%;
+    --input: 142 20% 85%;
+    --ring: 142 76% 22%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors */
+    --leaf: 142 76% 36%;
+    --soil: 30 40% 25%;
+    --wheat: 45 80% 60%;
+    --cream: 40 33% 96%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 22%) 0%, hsl(142 60% 30%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 93% 47%) 0%, hsl(40 90% 55%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(40 33% 98%) 0%, hsl(40 20% 94%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(142 40% 10% / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(142 40% 10% / 0.12);
+    --shadow-elevated: 0 20px 50px -12px hsl(142 40% 10% / 0.2);
+  }
+
+  .dark {
+    --background: 142 30% 8%;
+    --foreground: 40 33% 96%;
+
+    --card: 142 25% 12%;
+    --card-foreground: 40 33% 96%;
+
+    --popover: 142 25% 12%;
+    --popover-foreground: 40 33% 96%;
+
+    --primary: 142 60% 45%;
+    --primary-foreground: 142 30% 8%;
+
+    --secondary: 45 80% 55%;
+    --secondary-foreground: 142 30% 8%;
+
+    --muted: 142 20% 18%;
+    --muted-foreground: 142 15% 60%;
+
+    --accent: 45 60% 50%;
+    --accent-foreground: 142 30% 8%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 142 20% 20%;
+    --input: 142 20% 20%;
+    --ring: 142 60% 45%;
+
+    --leaf: 142 60% 50%;
+    --soil: 30 30% 40%;
+    --wheat: 45 70% 55%;
+    --cream: 40 20% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-gradient-earth {
+    background-image: var(--gradient-earth);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
