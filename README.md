@@ -1,73 +1,163 @@
-# Welcome to your Lovable project
+# RRR Enterprise - Door-to-Door Fertilizer Delivery
 
-## Project info
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue)](https://rrrdew.netlify.app/)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 📋 Table of Contents
 
-## How can I edit this code?
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Build](#build)
+- [Deployment](#deployment)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-There are several ways of editing your application.
+## 📌 Overview
 
-**Use Lovable**
+RRR Enterprise is a modern, responsive web application designed to assist farmers in exploring and inquiring about organic and chemical fertilizers. The platform offers convenient door-to-door delivery services, making it easier for agricultural communities to access quality fertilizers.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The application provides detailed information on various fertilizer types, their benefits, and a user-friendly interface for placing inquiries.
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Features
 
-**Use your preferred IDE**
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Fertilizer Categories**: Comprehensive sections for organic and chemical fertilizers
+- **Product Showcase**: Detailed information on different fertilizer products
+- **Nutrient Information**: Educational content about essential nutrients
+- **Contact Form**: Easy inquiry submission for customers
+- **Hero Section**: Engaging landing page with key highlights
+- **Navigation**: Smooth navigation with active link indicators
+- **Footer**: Contact information and additional links
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Frontend Framework**: React 18
+- **Build Tool**: Vite
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui (Radix UI)
+- **Icons**: Lucide React
+- **Routing**: React Router DOM
+- **Forms**: React Hook Form with Zod validation
+- **Animations**: Framer Motion
+- **Charts**: Recharts
+- **State Management**: React Query (TanStack)
+- **Deployment**: Netlify
 
-Follow these steps:
+## 📋 Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v18 or higher)
+- npm, yarn, or bun
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🚀 Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/erdewanshu1992/rrrdew.git
+   cd rrrdew
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+2. **Install dependencies**
+   ```bash
+   # Using npm
+   npm install
+
+   # Using yarn
+   yarn install
+
+   # Using bun
+   bun install
+   ```
+
+3. **Start the development server**
+   ```bash
+   # Using npm
+   npm run dev
+
+   # Using yarn
+   yarn dev
+
+   # Using bun
+   bun run dev
+   ```
+
+4. **Open your browser**
+
+   The application will be running at `http://localhost:5173` (default Vite port).
+
+## 💻 Usage
+
+- Navigate through different sections using the navbar
+- Explore fertilizer categories and products
+- Learn about nutrients and their benefits
+- Submit inquiries through the contact form
+- View responsive design on various devices
+
+## 🏗️ Build
+
+To create a production build:
+
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+This will generate an optimized `dist/` folder ready for deployment.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌐 Deployment
 
-**Use GitHub Codespaces**
+The project is configured for automatic deployment on Netlify:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Build Command**: `npm run build`
+- **Publish Directory**: `dist`
+- **Trigger**: Automatic on push to main branch
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+src/
+├── components/
+│   ├── ui/          # Reusable UI components (shadcn/ui)
+│   ├── HeroSection.tsx
+│   ├── Navbar.tsx
+│   ├── FertilizerCategories.tsx
+│   └── ...          # Other feature components
+├── pages/
+│   ├── Index.tsx
+│   └── NotFound.tsx
+├── hooks/
+├── lib/
+├── assets/          # Images and static assets
+└── App.tsx
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🤝 Contributing
 
-## How can I deploy this project?
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📄 License
 
-## Can I connect a custom domain to my Lovable project?
+This project is private and proprietary.
 
-Yes, you can!
+## 📞 Contact
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**RRR Enterprise**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Phone**: +91 8229068112
+- **Email**: qadev432@gmail.com
+- **Location**: Supaul, Bihar
+- **Website**: [https://rrrdew.netlify.app/](https://rrrdew.netlify.app/)
+
+For business inquiries or support, please reach out using the contact information above.
+
+---
+
+Made with ❤️ for farmers and agricultural communities.
