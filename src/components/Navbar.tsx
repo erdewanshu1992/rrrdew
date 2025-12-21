@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Truck, Phone, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import CartDrawer from "@/components/CartDrawer";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -10,9 +12,12 @@ const navLinks = [
   { name: "Chemical", href: "#chemical" },
   { name: "Products", href: "#products" },
   { name: "Contact", href: "#contact" },
+  { name: "Profile", href: "/profile", isRoute: true },
+  { name: "Order History", href: "/order-history", isRoute: true },
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -28,6 +33,15 @@ const Navbar = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleNavClick = (link: typeof navLinks[0]) => {
+    if (link.isRoute) {
+      navigate(link.href);
+    } else {
+      scrollToSection(link.href);
     }
     setIsMobileMenuOpen(false);
   };
@@ -95,24 +109,25 @@ const Navbar = () => {
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    handleNavClick(link);
                   }}
-                  className="text-foreground hover:text-primary font-medium transition-colors relative group"
+                  className="text-foreground hover:text-primary font-medium transition-all duration-300 relative group px-3 py-2 rounded-md hover:bg-primary/5"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-secondary group-hover:w-1/2 group-hover:left-1/4 transition-all duration-300" />
                 </a>
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
+            {/* CTA Button and Cart */}
+            <div className="hidden lg:flex items-center gap-4">
               <Button
                 onClick={() => scrollToSection("#contact")}
                 className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
               >
-                Order Now
+                Bulk Order
               </Button>
+              <CartDrawer />
             </div>
 
             {/* Mobile Menu Button */}
@@ -157,7 +172,7 @@ const Navbar = () => {
                     href={link.href}
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollToSection(link.href);
+                      handleNavClick(link);
                     }}
                     className="text-foreground hover:text-primary font-medium py-2 border-b border-border transition-colors"
                   >
@@ -168,7 +183,7 @@ const Navbar = () => {
                   onClick={() => scrollToSection("#contact")}
                   className="mt-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full"
                 >
-                  Order Now
+                  Bulk Order
                 </Button>
               </div>
             </motion.div>

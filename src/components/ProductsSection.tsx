@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import { ShoppingCart, Star, Truck } from "lucide-react";
+import { ShoppingCart, Star, Truck, Check, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/useCart";
+import { useToast } from "@/components/ui/use-toast";
 import organicImage from "@/assets/organic-fertilizer.jpg";
 import chemicalImage from "@/assets/chemical-fertilizer.jpg";
 import liquidImage from "@/assets/liquid-fertilizer.jpg";
@@ -11,6 +13,7 @@ const products = [
     name: "Premium Vermicompost",
     category: "Organic",
     price: "₹450",
+    priceNum: 450,
     unit: "per 25kg bag",
     rating: 4.8,
     image: organicImage,
@@ -22,6 +25,7 @@ const products = [
     name: "Urea 46% N",
     category: "Chemical",
     price: "₹320",
+    priceNum: 320,
     unit: "per 50kg bag",
     rating: 4.9,
     image: chemicalImage,
@@ -33,6 +37,7 @@ const products = [
     name: "NPK 10:26:26",
     category: "Complex",
     price: "₹1,450",
+    priceNum: 1450,
     unit: "per 50kg bag",
     rating: 4.7,
     image: chemicalImage,
@@ -44,6 +49,7 @@ const products = [
     name: "Liquid Fertilizer Spray",
     category: "Liquid",
     price: "₹280",
+    priceNum: 280,
     unit: "per 1L bottle",
     rating: 4.6,
     image: liquidImage,
@@ -55,6 +61,7 @@ const products = [
     name: "DAP 18:46:0",
     category: "Chemical",
     price: "₹1,350",
+    priceNum: 1350,
     unit: "per 50kg bag",
     rating: 4.8,
     image: chemicalImage,
@@ -66,6 +73,7 @@ const products = [
     name: "Organic Compost Mix",
     category: "Organic",
     price: "₹550",
+    priceNum: 550,
     unit: "per 30kg bag",
     rating: 4.5,
     image: organicImage,
@@ -75,6 +83,33 @@ const products = [
 ];
 
 const ProductsSection = () => {
+  const { addToCart, items, updateQuantity } = useCart();
+  const { toast } = useToast();
+
+  const handleAddToCart = (product: typeof products[0]) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      priceNum: product.priceNum,
+      unit: product.unit,
+      image: product.image,
+    });
+    toast({
+      title: "Added to Cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
+
+  const getCartItem = (productId: number) => {
+    return items.find(item => item.id === productId);
+  };
+
+  const handleQuantityChange = (productId: number, newQuantity: number) => {
+    updateQuantity(productId, newQuantity);
+  };
+
   return (
     <section id="products" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -147,10 +182,47 @@ const ProductsSection = () => {
                   <Truck className="w-4 h-4" />
                   <span>Free delivery on bulk orders</span>
                 </div>
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  Order Now
-                </Button>
+                {getCartItem(product.id) ? (
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="flex items-center justify-center gap-2 p-2 bg-leaf/10 rounded-lg border border-leaf/30"
+                  >
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="w-8 h-8 border-leaf/50 text-leaf hover:bg-leaf/20 hover:border-leaf"
+                      onClick={() => handleQuantityChange(product.id, getCartItem(product.id)!.quantity - 1)}
+                    >
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="font-semibold text-leaf min-w-[2rem] text-center bg-leaf/5 rounded px-2 py-1">
+                      {getCartItem(product.id)!.quantity}
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="w-8 h-8 border-leaf/50 text-leaf hover:bg-leaf/20 hover:border-leaf"
+                      onClick={() => handleQuantityChange(product.id, getCartItem(product.id)!.quantity + 1)}
+                    >
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
+                ) : (
+                  <Button
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full bg-leaf text-leaf-foreground hover:bg-leaf/90 transition-colors relative overflow-hidden group"
+                  >
+                    <ShoppingCart className="w-4 h-4 mr-2" />
+                    Add To Cart
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </Button>
+                )}
               </div>
             </motion.div>
           ))}

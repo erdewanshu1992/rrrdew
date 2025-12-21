@@ -10,6 +10,7 @@ import ProductsSection from "@/components/ProductsSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import StickyCartFooter from "@/components/StickyCartFooter";
 
 const Index = () => {
   return (
@@ -39,6 +40,7 @@ const Index = () => {
         <FeaturesSection />
         <ContactSection />
         <Footer />
+        <StickyCartFooter />
       </main>
     </>
   );
